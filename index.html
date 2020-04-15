@@ -1,1 +1,30 @@
-<h1>hello world</h1>
+<!DOCTYPE html>
+<html>
+<body>
+
+<audio hidden id="myAudio" controls>
+  <!-- <source src="lullaby/lullaby0415.ogg" type="audio/ogg"> -->
+  <source src="lullaby/lullaby0415.m4a" type="audio/mp4">
+Your browser does not support the audio element.
+</audio>
+
+<p>Click the buttons to Dream</p>
+
+<button onclick="playAudio()" type="button">Dream</button>
+<!-- <button onclick="pauseAudio()" type="button">Pause Audio</button>  -->
+
+<script>
+var x = document.getElementById("myAudio"); 
+x.display = "none";
+
+function playAudio() { 
+  x.play(); 
+} 
+
+function pauseAudio() { 
+  x.pause(); 
+} 
+</script>
+
+</body>
+</html>
