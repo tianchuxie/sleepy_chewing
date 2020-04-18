@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <!-- <link rel="stylesheet"  type="text/css" href="main.css"> -->
+    <style>
+      .titleText{
+          /* font-size: xx-large; */
+          font-family: KaiTi_GB2312;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
+          user-select: none;
+      }
+      p {
+        font-weight: 520;
+      }
+      .zangText{
+        font-size: large;
+      }
+      .normalText{
+        font-size: inherit;
+        font-weight: 520;
+      }
+      /* body {
+          background-color: black;
+      } */
+    </style>
+  </head>
+</html>
+<body>
+   <!-- I am not a child anymore. <br/><br/> -->
+   <audio hidden id="myAudio" controls>
+    <source src="lullaby/grown_up_sleep.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+  </audio>
+  update around midnight
+  <script>
+     var x = document.getElementById("myAudio"); 
+     x.display = "none";
+     var check = true;
+
+    function changeStatus(){
+      if (check) 
+        playAudio();
+      else 
+        pauseAudio();
+      check = !check;
+    }
+    function playAudio() { 
+      document.getElementById('sphereImage').src='asserts/animejs-v3-header-animation.gif';
+      x.play(); 
+    } 
+
+    function pauseAudio() { 
+      document.getElementById('sphereImage').src='asserts/animejs-v3-header-animation-static.jpg';
+      x.pause(); 
+    } 
+  </script>
+</body>
