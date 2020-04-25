@@ -12,7 +12,7 @@
         /* background-color: 	rgba(250, 168, 213, 0.918) */
       }
       .txtcolor {
-        color:	rgba(241, 173, 26, 0.979)
+        color:	rgba(235, 135, 205, 0.979)
       }
       .titleText{
           /* font-size: xx-large; */
@@ -26,7 +26,7 @@
           /* font-family: 'Cloister Black BT', arial; */
           font-family: "Cloister Black Light"; 
         /* font-size: 48px; */
-        text-shadow: 4px 4px 4px rgba(241, 173, 26, 0.5);
+        text-shadow: 4px 4px 4px rgba(91, 7, 94, 0.274);
       }
       p {
         font-weight: 520;
@@ -47,15 +47,15 @@
 <body>
   <h1 class="titleText txtcolor" align="center">
     <audio hidden id="myAudio" controls>
-      <source src="lullaby/pig_n_rabbit.mp3" type="audio/mp3">
+      <source src="lullaby/rabbit_two_talk.mp3" type="audio/mp3">
     Your browser does not support the audio element.
     </audio>
-    <i>    <br/><br/>Pour Moi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-      Princesse Chuchu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+    <i>    <br/><br/>Pour Moi<br/>
+      Lapine Chuchu<br/><br/><br/>
     </i>
 
     <div>
-      <a class="sphere" onclick="changeStatus()"><img class='backpink' id="sphereImage" src="asserts/crown-2.jpg" width="500"/></a>
+      <a class="sphere" onclick="changeStatus()"><img class='backpink' id="sphereImage" src="asserts/rabbit.jpg" width="500"/></a>
     </div>
       <!-- <br/>
       For&nbsp;&nbsp;&nbsp;<br/>公主楚楚&nbsp;&nbsp;&nbsp;<br/>
@@ -76,12 +76,12 @@
       check = !check;
     }
     function playAudio() { 
-      document.getElementById('sphereImage').src='asserts/crown-2.gif';
+      document.getElementById('sphereImage').src='asserts/rabbit.gif';
       x.play(); 
     } 
 
     function pauseAudio() { 
-      document.getElementById('sphereImage').src='asserts/crown-2.jpg';
+      document.getElementById('sphereImage').src='asserts/rabbit.jpg';
       x.pause(); 
     } 
   </script>
