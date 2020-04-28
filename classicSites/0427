@@ -52,14 +52,19 @@
 <body>
   <h1 class="titleText txtcolor" align="center">
     <audio hidden id="myAudio" controls>
-      <source src="lullaby/unicorn00.mp3" type="audio/mp3">
+      <source src="lullaby/rabbit_two_talk.mp3" type="audio/mp3">
     Your browser does not support the audio element.
     </audio>
+    <i>    <br/><br/>Pour Mignonne Chuchu<br/>
+      Nite 0426<br/><br/><br/>
+      Bonne Nuit<br/><br/>
+    </i>
 
-    <div>
-      <a class="sphere" onclick="changeStatus()"><img class='backpink' id="sphereImage" src="asserts/unicorn/unicorn0.jpg" width="500"/></a>
-    </div>
-      <!-- <!-- <br/>
+    <!-- <img src="asserts/huangfang0.jpeg"/>  <img src="asserts/huangfang1.jpeg"/>  -->
+    <!-- <div>
+      <a class="sphere" onclick="changeStatus()"><img class='backpink' id="sphereImage" src="asserts/rabbit.jpg" width="500"/></a>
+    </div> -->
+      <!-- <br/>
       For&nbsp;&nbsp;&nbsp;<br/>公主楚楚&nbsp;&nbsp;&nbsp;<br/>
       <br/><br/> おやすみ&nbsp;&nbsp;&nbsp;<br/>梦の中で&nbsp;&nbsp;&nbsp;<br/>会いましょう&nbsp;&nbsp;&nbsp;<br/> Zz(´-ω-`*)&nbsp;&nbsp;&nbsp;
      -->
@@ -79,12 +84,12 @@
       check = !check;
     }
     function playAudio() { 
-      document.getElementById('sphereImage').src='asserts/unicorn/unicorn0.gif';
+      document.getElementById('sphereImage').src='asserts/rabbit.gif';
       x.play(); 
     } 
 
     function pauseAudio() { 
-      document.getElementById('sphereImage').src='asserts/unicorn/unicorn0.jpg';
+      document.getElementById('sphereImage').src='asserts/rabbit.jpg';
       x.pause(); 
     } 
   </script>
