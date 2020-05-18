@@ -75,7 +75,7 @@ Your browser does not support the audio element.
       if(typeof(Storage) !== "undefined") {
         if (localStorage.clickcount) {
           localStorage.clickcount = Number(localStorage.clickcount)+1;
-          changeChoice(localStorage.clickcount);
+          changeChoice2(localStorage.clickcount);
           document.getElementById("madTitle").innerHTML = "u just finished listening,<br/> r u still mad mad?<br/>u r a mad chuchu<br/> and u have clicked " + localStorage.clickcount + " times.<br/><br/> So are we cool now?";
           localStorage.again = 1;
         }
@@ -103,11 +103,13 @@ Your browser does not support the audio element.
       if(typeof(Storage) !== "undefined") {
         if (localStorage.clickcount) {
           localStorage.clickcount = Number(localStorage.clickcount)+1;
-          changeChoice(localStorage.clickcount);
+          
           if (localStorage.again){
             document.getElementById("madTitle").innerHTML = "u just finished listening,<br/> r u still mad mad?<br/>u r a mad chuchu<br/> and u have clicked " + localStorage.clickcount + " times.<br/><br/> So are we cool now?";
+            changeChoice2(localStorage.clickcount);
           } else {
             console.log('else');
+            changeChoice(localStorage.clickcount);
           }
         } else {
           localStorage.clickcount = 1;
@@ -129,7 +131,16 @@ Your browser does not support the audio element.
         document.getElementById('choice').src= "asserts/choices/c1.png";
       }
     }
-
+    
+    function changeChoice2 (n){
+      var index = Number(n) % 3;
+      var imageUrl = "asserts/choices/c"+index.toString()+".png";
+      if (imageUrl){
+        document.getElementById('choice').src= imageUrl;
+      } else {
+        document.getElementById('choice').src= "asserts/choices/c1.png";
+      }
+    }
      var check = true;
 
     function changeStatus(){
