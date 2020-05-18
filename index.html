@@ -10,7 +10,7 @@
 }
       body{
         /* pink  */
-        /* background-color: 	rgba(255, 182, 222, 0.918) */
+        background-color: 		rgba(15, 15, 15, 0.928)
         /* background-color: 	rgba(250, 168, 213, 0.918) */
       }
       .backpink{
@@ -31,7 +31,8 @@
           /* font-family: 'Cloister Black BT', arial; */
           font-family: "Cloister Black Light"; 
         /* font-size: 48px; */
-        text-shadow: 4px 4px 4px rgba(91, 7, 94, 0.274);
+        color:	rgba(190, 162, 182, 0.979);
+        text-shadow: 4px 4px 4px rgba(235, 135, 205, 0.979)
       }
       p {
         font-weight: 520;
@@ -43,6 +44,9 @@
         font-size: inherit;
         font-weight: 520;
       }
+      .choiceImage{
+        max-width:100%; height:auto;
+      }
       /* body {
           background-color: black;
       } */
@@ -50,25 +54,65 @@
   </head>
 </html>
 <body>
-  <h1 class="titleText txtcolor" align="center">
-    <audio hidden id="myAudio" controls>
-      <source src="lullaby/unicorn/unicorn04.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-    </audio>
+  <!-- <p><button onclick="clickCounter()" type="button">Click me!</button></p> -->
+<!-- <div id="result"></div> -->
+<audio hidden id="myAudio" controls>
+  <source src="lullaby/songs/apologia.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
+<h1 id="madTitle" class="titleText">Are u still mad mad? </h1>
+<!-- <button onclick="chuchumadmad()" type="button">Yes</button> -->
+<a onclick="clickCounter()"><img class="choiceImage" id="choice" src="asserts/choices/c0.png"/></a>
 
-    <div>
-      <a class="sphere" onclick="changeStatus()"><img class='backpink' id="sphereImage" src="asserts/unicorn/unicorn04.jpg" width="500"/></a>
-    </div>
-      <!-- <!-- <br/>
-      For&nbsp;&nbsp;&nbsp;<br/>公主楚楚&nbsp;&nbsp;&nbsp;<br/>
-      <br/><br/> おやすみ&nbsp;&nbsp;&nbsp;<br/>梦の中で&nbsp;&nbsp;&nbsp;<br/>会いましょう&nbsp;&nbsp;&nbsp;<br/> Zz(´-ω-`*)&nbsp;&nbsp;&nbsp;
-     -->
 
-</h1>
 <!-- <img src="asserts/jemappelle.jpeg"/>   -->
   <script>
-     var x = document.getElementById("myAudio"); 
-     x.display = "none";
+    var x = document.getElementById("myAudio"); 
+    x.display = "none";
+    function chuchumadmad() {
+      if(typeof(Storage) !== "undefined") {
+        if (localStorage.mad) {
+          var index = Number(localStorage.mad)+1;
+          localStorage.mad = index;
+          document.getElementById('choiceImage').src='asserts/unicorn/unicorn04.gif';
+        } else {
+          localStorage.mad = 1;
+          playAudio();
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+      } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+      }
+    }
+    function clickCounter() {
+      if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+          localStorage.clickcount = Number(localStorage.clickcount)+1;
+          changeChoice(localStorage.clickcount);
+          console.log(imageUrl);
+
+        } else {
+          localStorage.clickcount = 1;
+          changeChoice(localStorage.clickcount);
+          x.play();
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+      } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+      }
+    }
+
+    function changeChoice (n){
+      var index = Number(n) % 3 + 1;
+      var imageUrl = "asserts/choices/c"+index.toString()+".png";
+      if (imageUrl){
+        document.getElementById('choice').src= imageUrl;
+      } else {
+        document.getElementById('choice').src= "asserts/choices/c1.png";
+      }
+      document.getElementById("madTitle").innerHTML = "After listening, are you still mad mad?";
+    }
+
      var check = true;
 
     function changeStatus(){
