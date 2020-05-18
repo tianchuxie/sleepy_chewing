@@ -53,7 +53,7 @@
     </style>
   </head>
 </html>
-<body>
+<body onload="load()"> 
   <!-- <p><button onclick="clickCounter()" type="button">Click me!</button></p> -->
 <!-- <div id="result"></div> -->
 <audio hidden id="myAudio" controls>
@@ -69,36 +69,54 @@ Your browser does not support the audio element.
   <script>
     var x = document.getElementById("myAudio"); 
     x.display = "none";
-    function chuchumadmad() {
+    var b = true;
+    function load(){
+      console.log('yes');
       if(typeof(Storage) !== "undefined") {
-        if (localStorage.mad) {
-          var index = Number(localStorage.mad)+1;
-          localStorage.mad = index;
-          document.getElementById('choiceImage').src='asserts/unicorn/unicorn04.gif';
-        } else {
-          localStorage.mad = 1;
-          playAudio();
+        if (localStorage.clickcount) {
+          localStorage.clickcount = Number(localStorage.clickcount)+1;
+          changeChoice(localStorage.clickcount);
+          document.getElementById("madTitle").innerHTML = "u just finished listening,<br/> r u still mad mad?<br/>u r a mad chuchu<br/> and u have clicked " + localStorage.clickcount + " times.<br/><br/> So are we cool now?";
+          localStorage.again = 1;
         }
-        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
       } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+        console.log('no')
       }
     }
+
+    // function chuchumadmad() {
+    //   if(typeof(Storage) !== "undefined") {
+    //     if (localStorage.mad) {
+    //       var index = Number(localStorage.mad)+1;
+    //       localStorage.mad = index;
+    //       document.getElementById('choiceImage').src='asserts/unicorn/unicorn04.gif';
+    //     } else {
+    //       localStorage.mad = 1;
+    //       playAudio();
+    //     }
+    //     document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    //   } else {
+    //     document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    //   }
+    // }
     function clickCounter() {
       if(typeof(Storage) !== "undefined") {
         if (localStorage.clickcount) {
           localStorage.clickcount = Number(localStorage.clickcount)+1;
           changeChoice(localStorage.clickcount);
-          console.log(imageUrl);
-
+          if (localStorage.again){
+            document.getElementById("madTitle").innerHTML = "u just finished listening,<br/> r u still mad mad?<br/>u r a mad chuchu<br/> and u have clicked " + localStorage.clickcount + " times.<br/><br/> So are we cool now?";
+          } else {
+            console.log('else');
+          }
         } else {
           localStorage.clickcount = 1;
           changeChoice(localStorage.clickcount);
           x.play();
+          document.getElementById("madTitle").innerHTML = "After listening, are you still mad mad?";
         }
-        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
       } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+          //
       }
     }
 
@@ -110,7 +128,6 @@ Your browser does not support the audio element.
       } else {
         document.getElementById('choice').src= "asserts/choices/c1.png";
       }
-      document.getElementById("madTitle").innerHTML = "After listening, are you still mad mad?";
     }
 
      var check = true;
