@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <!-- <link rel="stylesheet"  type="text/css" href="main.css"> -->
+    <link href="http://allfont.net/allfont.css?fonts=cloister-black-bt" rel="stylesheet" type="text/css" />
+    <style>
+      img{
+  display:block;
+  width:100%;
+  object-fit: cover;
+  -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
+          user-select: none;
+}
+      body{
+        /* pink  */
+        background-color: 		rgba(15, 15, 15, 0.928)
+        /* background-color: 	rgba(250, 168, 213, 0.918) */
+      }
+      .backpink{
+        /* background-color: 	rgba(250, 168, 213, 0.918) */
+      }
+      .txtcolor {
+        color:	rgba(235, 135, 205, 0.979)
+      }
+      .titleText{
+          /* font-size: xx-large; */
+          /* font-family: KaiTi_GB2312; */
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
+          user-select: none;
+          /* font-family: 'Cloister Black BT', arial; */
+          font-family: "Cloister Black Light"; 
+        /* font-size: 48px; */
+        color:	rgba(190, 162, 182, 0.979);
+        text-shadow: 4px 4px 4px rgba(235, 135, 205, 0.979)
+      }
+      p {
+        font-weight: 520;
+      }
+      .zangText{
+        font-size: large;
+      }
+      .normalText{
+        font-size: inherit;
+        font-weight: 520;
+      }
+      .choiceImage{
+        max-width:100%; height:auto;
+        
+      }
+      /* body {
+          background-color: black;
+      } */
+    </style>
+  </head>
+</html>
+<body onload="load()"> 
+  <!-- <p><button onclick="clickCounter()" type="button">Click me!</button></p> -->
+<!-- <div id="result"></div> -->
+<audio hidden id="myAudio" controls>
+  <source src="lullaby/songs/apologia.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
+<h1 id="madTitle" class="titleText">Are u still mad mad? </h1>
+<!-- <button onclick="chuchumadmad()" type="button">Yes</button> -->
+<a class="titleText" onclick="clickCounter()"><img class="choiceImage " id="choice" src="asserts/choices/c0.png"/></a>
+
+
+<!-- <img src="asserts/jemappelle.jpeg"/>   -->
+  <script>
+    var x = document.getElementById("myAudio"); 
+    x.display = "none";
+    var b = true;
+    function load(){
+      console.log('yes');
+      if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+          localStorage.clickcount = Number(localStorage.clickcount)+1;
+          changeChoice2(localStorage.clickcount);
+          document.getElementById("madTitle").innerHTML = "u just finished listening,<br/> r u still mad mad?<br/>u r a mad chuchu<br/> and u have clicked " + localStorage.clickcount + " times.<br/><br/> So are we cool now?";
+          localStorage.again = 1;
+        }
+      } else {
+        console.log('no')
+      }
+    }
+
+    // function chuchumadmad() {
+    //   if(typeof(Storage) !== "undefined") {
+    //     if (localStorage.mad) {
+    //       var index = Number(localStorage.mad)+1;
+    //       localStorage.mad = index;
+    //       document.getElementById('choiceImage').src='asserts/unicorn/unicorn04.gif';
+    //     } else {
+    //       localStorage.mad = 1;
+    //       playAudio();
+    //     }
+    //     document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    //   } else {
+    //     document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    //   }
+    // }
+    function clickCounter() {
+      if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+          localStorage.clickcount = Number(localStorage.clickcount)+1;
+          
+          if (localStorage.again){
+            document.getElementById("madTitle").innerHTML = "u just finished listening,<br/> r u still mad mad?<br/>u r a mad chuchu<br/> and u have clicked " + localStorage.clickcount + " times.<br/><br/> So are we cool now?";
+            changeChoice2(localStorage.clickcount);
+          } else {
+            console.log('else');
+            changeChoice(localStorage.clickcount);
+          }
+        } else {
+          localStorage.clickcount = 1;
+          changeChoice(localStorage.clickcount);
+          x.play();
+          document.getElementById("madTitle").innerHTML = "After listening, are you still mad mad?";
+        }
+      } else {
+          //
+      }
+    }
+
+    function changeChoice (n){
+      var index = Number(n) % 3 + 1;
+      var imageUrl = "asserts/choices/c"+index.toString()+".png";
+      if (imageUrl){
+        document.getElementById('choice').src= imageUrl;
+      } else {
+        document.getElementById('choice').src= "asserts/choices/c1.png";
+      }
+    }
+    
+    function changeChoice2 (n){
+      var index = Number(n) % 3;
+      var imageUrl = "asserts/choices/c"+index.toString()+".png";
+      if (imageUrl){
+        document.getElementById('choice').src= imageUrl;
+      } else {
+        document.getElementById('choice').src= "asserts/choices/c1.png";
+      }
+    }
+     var check = true;
+
+    function changeStatus(){
+      if (check) 
+        playAudio();
+      else 
+        pauseAudio();
+      check = !check;
+    }
+    function playAudio() { 
+      document.getElementById('sphereImage').src='asserts/unicorn/unicorn04.gif';
+      x.play(); 
+    } 
+
+    function pauseAudio() { 
+      document.getElementById('sphereImage').src='asserts/unicorn/unicorn04.jpg';
+      x.pause(); 
+    } 
+  </script>
+</body>
