@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <!-- <link rel="stylesheet"  type="text/css" href="main.css"> -->
+    <link href="http://allfont.net/allfont.css?fonts=cloister-black-bt" rel="stylesheet" type="text/css" />
+    <style>
+      img{
+  display:block;
+  width:100%;
+  object-fit: cover;
+}
+      body{
+        /* pink  */
+        /* background-color: 	rgba(255, 182, 222, 0.918) */
+        /* background-color: 	rgba(250, 168, 213, 0.918) */
+      }
+      .backpink{
+        /* background-color: 	rgba(250, 168, 213, 0.918) */
+      }
+      .txtcolor {
+        color:	rgba(235, 135, 205, 0.979)
+      }
+      .titleText{
+          /* font-size: xx-large; */
+          /* font-family: KaiTi_GB2312; */
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
+          user-select: none;
+          /* font-family: 'Cloister Black BT', arial; */
+          font-family: "Cloister Black Light"; 
+        /* font-size: 48px; */
+        text-shadow: 4px 4px 4px rgba(91, 7, 94, 0.274);
+      }
+      p {
+        font-weight: 520;
+      }
+      .zangText{
+        font-size: large;
+      }
+      .normalText{
+        font-size: inherit;
+        font-weight: 520;
+      }
+      /* body {
+          background-color: black;
+      } */
+    </style>
+  </head>
+</html>
+<body>
+  <h1 class="titleText txtcolor" align="center">
+    <audio hidden id="myAudio" controls>
+      <source src="lullaby/unicorn/unicorn05.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+    </audio>
+
+    <div>
+      <a class="sphere" onclick="changeStatus()"><img class='backpink' id="sphereImage" src="asserts/unicorn/unicorn05.jpg" width="500"/></a>
+    </div>
+
+</h1>
+<!-- <img src="asserts/jemappelle.jpeg"/>   -->
+  <script>
+     var x = document.getElementById("myAudio"); 
+     x.display = "none";
+     var check = true;
+
+    function changeStatus(){
+      if (check) 
+        playAudio();
+      else 
+        pauseAudio();
+      check = !check;
+    }
+    function playAudio() { 
+      document.getElementById('sphereImage').src='asserts/unicorn/unicorn05.gif';
+      x.play(); 
+    } 
+
+    function pauseAudio() { 
+      document.getElementById('sphereImage').src='asserts/unicorn/unicorn05.jpg';
+      x.pause(); 
+    } 
+  </script>
+</body>

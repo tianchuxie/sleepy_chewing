@@ -1,91 +1,263 @@
 <html>
   <head>
-    <!-- <link rel="stylesheet"  type="text/css" href="main.css"> -->
-    <link href="http://allfont.net/allfont.css?fonts=cloister-black-bt" rel="stylesheet" type="text/css" />
-    <style>
-      img{
-  display:block;
-  width:100%;
-  object-fit: cover;
+<style>
+  body {
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
+  background: linear-gradient(180deg, #333, #111);
+  color: #000;
 }
-      body{
-        /* pink  */
-        /* background-color: 	rgba(255, 182, 222, 0.918) */
-        /* background-color: 	rgba(250, 168, 213, 0.918) */
-      }
-      .backpink{
-        /* background-color: 	rgba(250, 168, 213, 0.918) */
-      }
-      .txtcolor {
-        color:	rgba(235, 135, 205, 0.979)
-      }
-      .titleText{
-          /* font-size: xx-large; */
-          /* font-family: KaiTi_GB2312; */
-          -webkit-user-select: none;
-          -khtml-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          -o-user-select: none;
-          user-select: none;
-          /* font-family: 'Cloister Black BT', arial; */
-          font-family: "Cloister Black Light"; 
-        /* font-size: 48px; */
-        text-shadow: 4px 4px 4px rgba(91, 7, 94, 0.274);
-      }
-      p {
-        font-weight: 520;
-      }
-      .zangText{
-        font-size: large;
-      }
-      .normalText{
-        font-size: inherit;
-        font-weight: 520;
-      }
-      /* body {
-          background-color: black;
-      } */
-    </style>
+.backpink{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.copyrights {
+  text-align: center;
+  text-transform: capitalize;
+  margin: 50px;
+  color: rgba(53, 212, 240, 0.74);
+}
+.copyrights a {
+  color: rgba(152, 46, 75, 0.9);
+  /* text-decoration: none; */
+}
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 500px;
+  height: 360px;
+  background: #111;
+  box-shadow: 0 30px 20px -20px #000;
+  box-sizing: border-box;
+}
+header {
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  clear: both;
+  box-sizing: border-box;
+}
+header .playlist {
+  float: left;
+  cursor: pointer;
+}
+header .setting {
+  float: right;
+  cursor: pointer;
+}
+main {
+  clear: both;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+main .album-art {
+  float: left;
+  padding: 0.5rem;
+  background: #000;
+}
+main .album-art img {
+  width: 160px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+main .player {
+  position: relative;
+  float: right;
+  width: 176px;
+  height: 176px;
+  background: -webkit-gradient(linear, left bottom, left top, from(#222), to(#111));
+  background: linear-gradient(0deg, #222, #111);
+  border-radius: 100%;
+  border: solid 2px #000;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 4px 2px rgba(0, 0, 0, 0.2);
+}
+main .player .fa {
+  font-size: 1.2rem;
+  position: absolute;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+main .player .fa:hover {
+  color: cyan;
+  text-shadow: 0 0 4px cyan;
+}
+main .player .fa.fa-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 88px;
+  height: 88px;
+  border: solid 2px #000;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 0 8px rgba(0, 0, 0, 0.6);
+  border-radius: 100%;
+  line-height: 88px;
+  text-align: center;
+  background: -webkit-gradient(linear, left bottom, left top, from(#111), to(#222));
+  background: linear-gradient(0deg, #111, #222);
+}
+main .player .fa.fa-repeat {
+  top: 8%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+main .player .fa.fa-fast-backward {
+  top: 50%;
+  left: 8%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+main .player .fa.fa-fast-forward {
+  top: 50%;
+  left: 82%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+main .player .fa.fa-random {
+  top: 82%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+footer {
+  clear: both;
+  padding: 2rem 2rem;
+  color: #999;
+  text-shadow: 2px 2px #111;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+footer .title {
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+footer .time-tracker {
+  border-top: solid 1px #000;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding-top: 0.5rem;
+  box-sizing: border-box;
+}
+footer .time-tracker .timer {
+  position: relative;
+  float: left;
+  width: 90%;
+  height: 2rem;
+  cursor: pointer;
+}
+footer .time-tracker .timer .bg {
+  position: relative;
+  top: 50%;
+  margin-right: 0.5rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  height: 0.6rem;
+  border-top: solid 1px #000;
+  border-radius: 10px;
+  background: none;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+footer .time-tracker .timer .bg:before {
+  content: "";
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  position: absolute;
+  height: 0.2rem;
+  border-radius: 10px;
+  width: 10%;
+  background: cyan;
+  box-shadow: 0 0 2px 2px cyan;
+}
+footer .time-tracker .time {
+  float: left;
+  width: 10%;
+  line-height: 2rem;
+}
+
+</style>
   </head>
 </html>
+
 <body>
-  <h1 class="titleText txtcolor" align="center">
-    <audio hidden id="myAudio" controls>
-      <source src="lullaby/unicorn/unicorn05.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-    </audio>
+  <p class="copyrights">
+    Designed by <a href='https://github.com/tianchuxie'>x t c</a> and Music by <a href='https://music.163.com/#/djradio?id=349419879'>Mr.Rejifukuro</a>
 
-    <div>
-      <a class="sphere" onclick="changeStatus()"><img class='backpink' id="sphereImage" src="asserts/unicorn/unicorn05.jpg" width="500"/></a>
-    </div>
-      <!-- <!-- <br/>
-      For&nbsp;&nbsp;&nbsp;<br/>公主楚楚&nbsp;&nbsp;&nbsp;<br/>
-      <br/><br/> おやすみ&nbsp;&nbsp;&nbsp;<br/>梦の中で&nbsp;&nbsp;&nbsp;<br/>会いましょう&nbsp;&nbsp;&nbsp;<br/> Zz(´-ω-`*)&nbsp;&nbsp;&nbsp;
-     -->
+  <audio hidden id="myAudio" controls>
+    <source src="lullaby/watermelon_summer.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+  </audio>
 
-</h1>
-<!-- <img src="asserts/jemappelle.jpeg"/>   -->
-  <script>
-     var x = document.getElementById("myAudio"); 
-     x.display = "none";
-     var check = true;
+  <div>
+    <a class="sphere" onclick="changeStatus()"><img class='backpink' id="sphereImage" src="asserts/watermelon.jpg" width="500"/></a>
+  </div>
+  <!-- <div class="container">
+    <header>
+      <div class="playlist">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div class="setting">
+        <i class="fa fa-cog"></i>
+      </div>
+    </header>
+    <main>
+      <div class="album-art">
+        <img src="https://user-images.githubusercontent.com/10569455/85092785-7bf56500-b1b8-11ea-90e5-3a6d7aefccbf.jpg" alt="ff" width="500" />
+      </div>
+      <div class="player">
+        <a class="sphere" onclick="changeStatus()"><i class="fa fa-repeat"></i></a>
+        <i class="fa fa-fast-backward"></i>
+        <i class="fa fa-play"></i>
+        <i class="fa fa-fast-forward"></i>
+        <i class="fa fa-random"></i>
+      </div>
+    </main>
+    <footer>
+      <div class="title">The Vines - Ride
+      </div>
+      <div class="time-tracker">
+        <div class="timer">
+          <div class="bg">
+          </div>
+        </div>
+        <div class="time">00:80</div>
+      </div>
+    </footer>
+  </div> -->
 
-    function changeStatus(){
-      if (check) 
-        playAudio();
-      else 
-        pauseAudio();
-      check = !check;
-    }
-    function playAudio() { 
-      document.getElementById('sphereImage').src='asserts/unicorn/unicorn05.gif';
-      x.play(); 
-    } 
-
-    function pauseAudio() { 
-      document.getElementById('sphereImage').src='asserts/unicorn/unicorn05.jpg';
-      x.pause(); 
-    } 
-  </script>
+    <script>
+      var x = document.getElementById("myAudio"); 
+      x.display = "none";
+      var check = true;
+ 
+     function changeStatus(){
+       if (check) 
+         playAudio();
+       else 
+         pauseAudio();
+       check = !check;
+     }
+     function playAudio() { 
+       document.getElementById('sphereImage').src='asserts/watermelon.gif';
+       x.play(); 
+     } 
+ 
+     function pauseAudio() { 
+       document.getElementById('sphereImage').src='asserts/watermelon.jpg';
+       x.pause(); 
+     } 
+   </script>
 </body>
+
+
